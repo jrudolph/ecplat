@@ -22,7 +22,8 @@ repositories {
 
 dependencies {
   // This dependency is needed so Gradle doesnt run home and use 2.9 which is incompatible with our Akka version
-  scalaTools group: 'org.scala-lang', name: 'scala-compiler', version: '2.10.0'
+  // Note that this dependency is not needed if the gradle version is 1.4 or above.
+  // scalaTools group: 'org.scala-lang', name: 'scala-compiler', version: '2.10.0'
 
   // We want to use this specific version of Akka to avoid incompatibilities with Scala
   compile group: 'com.typesafe.akka', name: 'akka-actor_2.10', version: '2.1.0'
