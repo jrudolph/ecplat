@@ -1,7 +1,7 @@
 // An example of how to create an Akka Application using gradle.
 // By Robert Simmons Jr. with help from the Scala and Gradle Community
 
-description = 'A ecommerce platform as a demo app for Akka - Ajax App'
+description = 'A eCommerce platform as a demo app for Akka - Ajax App'
 group = 'com.kraythensoft'
 
 apply plugin: 'scala'
@@ -11,6 +11,11 @@ sourceCompatibility=1.6
 targetCompatibility=1.6
 // This tells gradle to use its built in compiler rather than Ant tools. 
 compileScala.scalaCompileOptions.useAnt=false
+
+ext {
+  akkaVersion = '2.1.0'
+  camelVersion = '2.10.0'
+}
 
 configurations {
   compile
@@ -26,10 +31,12 @@ dependencies {
   // scalaTools group: 'org.scala-lang', name: 'scala-compiler', version: '2.10.0'
 
   // We want to use this specific version of Akka to avoid incompatibilities with Scala
-  compile group: 'com.typesafe.akka', name: 'akka-actor_2.10', version: '2.1.0'
+  compile group: 'com.typesafe.akka', name: 'akka-actor_2.10', version: akkaVersion
+  compile group: 'com.typesafe.akka', name: 'akka-camel_2.10', version: akkaVersion
+  compile group: 'org.apache.camel', name: 'camel-jetty', version: camelVersion
 }
 
 task run(type: JavaExec, dependsOn: classes) {
-  main = 'org.kraythensoft.store.Main'
+  main = 'com.kraythensoft.ecplat.Main'
   classpath sourceSets.main.runtimeClasspath
 }
