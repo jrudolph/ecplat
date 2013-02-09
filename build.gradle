@@ -1,20 +1,28 @@
-// An example of how to create an Akka Application using gradle.
+// An example of how to create an Akka Application using Gradle.
 // By Robert Simmons Jr. with help from the Scala and Gradle Community
-
 description = 'A eCommerce platform as a demo app for Akka - Ajax App'
 group = 'com.kraythensoft'
+version = '0.2.1'
 
+// Verify the user has a Gradle version capable of the build.
+assert gradle.gradleVersion >= '1.4', 'This Build only works with Gradle Version 1.4 or Above'
+
+// Apply Gradle Plugins to the Project
 apply plugin: 'scala'
 
 // These two options are needed by the Gradle scala compiler to get the right JVM
 sourceCompatibility=1.6
 targetCompatibility=1.6
-// This tells gradle to use its built in compiler rather than Ant tools. 
+
+// This tells gradle to use its built in compiler rather than Ant tools. If you don't do this then you will get warnings about
+// deprecated target VMs when compiling the scala
 compileScala.scalaCompileOptions.useAnt=false
 
 ext {
+  // Version numbers for different library sets are stored here.
   akkaVersion = '2.1.0'
   camelVersion = '2.10.0'
+  log4jVersion = '2.0-beta4'
 }
 
 configurations {
@@ -22,21 +30,27 @@ configurations {
 }
 
 repositories {
+  // Dont use the Typesafe.com repos, the artifacts you need are in maven central.
   mavenCentral()
 }
 
 dependencies {
-  // This dependency is needed so Gradle doesnt run home and use 2.9 which is incompatible with our Akka version
-  // Note that this dependency is not needed if the gradle version is 1.4 or above.
-  // scalaTools group: 'org.scala-lang', name: 'scala-compiler', version: '2.10.0'
-
-  // We want to use this specific version of Akka to avoid incompatibilities with Scala
+  // We want to use this specific version of Akka parts to avoid incompatibilities with Scala
   compile group: 'com.typesafe.akka', name: 'akka-actor_2.10', version: akkaVersion
   compile group: 'com.typesafe.akka', name: 'akka-camel_2.10', version: akkaVersion
+
+  // Pluggable modules for Camel
   compile group: 'org.apache.camel', name: 'camel-jetty', version: camelVersion
+
+  // Log4j 2 Dependencies
+  runtime group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
+  runtime group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+  runtime group: 'org.apache.logging.log4j.adapters', name: 'log4j-slf4j-impl', version: log4jVersion
 }
 
+// This run task starts up the Akka Microkernel which can be killed with ctrl-c
 task run(type: JavaExec, dependsOn: classes) {
+  println('Starting Akka Microkernel, Exit with CTRL-C.')
   main = 'com.kraythensoft.ecplat.Main'
   classpath sourceSets.main.runtimeClasspath
 }
