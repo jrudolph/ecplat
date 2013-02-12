@@ -7,7 +7,6 @@ import spray.can.server.SprayCanHttpServerApp
 import spray.json.DefaultJsonProtocol._
 import scala.concurrent.duration._
 import akka.actor._
-import spray.util._
 import spray.http._
 import spray.json._
 
@@ -32,7 +31,7 @@ class CamelFileActor extends Consumer {
   }
 }
 
-class HTTPRoutingActor extends Actor with SprayActorLogging {
+class HTTPRoutingActor extends Actor with spray.util.SprayActorLogging {
   val jsonContentType = new ContentType(MediaTypes.`application/json`, Option(HttpCharsets.`UTF-8`))
 
   def receive = {
