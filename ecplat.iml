@@ -22,31 +22,30 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="akka-actor_2.10-2.1.0" level="project" />
-    <orderEntry type="library" exported="" name="config-1.0.0" level="project" />
     <orderEntry type="library" name="Scala-2.10-dist-library" level="application" />
-    <orderEntry type="library" exported="" name="scala-library-2.10.0" level="project" />
-    <orderEntry type="library" exported="" name="slf4j-api-1.7.2" level="project" />
-    <orderEntry type="library" exported="" name="camel-core-2.10.0" level="project" />
     <orderEntry type="library" exported="" name="akka-slf4j_2.10-2.1.0" level="project" />
+    <orderEntry type="library" exported="" name="slf4j-api-1.7.2" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="log4j-core-2.0-beta4" level="project" />
+    <orderEntry type="library" exported="" name="config-1.0.0" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="log4j-slf4j-impl-2.0-beta4" level="project" />
+    <orderEntry type="library" exported="" name="akka-actor_2.10-2.1.0" level="project" />
     <orderEntry type="library" exported="" name="akka-camel_2.10-2.1.0" level="project" />
-    <orderEntry type="library" exported="" name="camel-jetty-2.10.0" level="project" />
-    <orderEntry type="library" exported="" name="camel-http-2.10.0" level="project" />
-    <orderEntry type="library" exported="" name="commons-codec-1.6" level="project" />
-    <orderEntry type="library" exported="" name="servlet-api-2.5" level="project" />
-    <orderEntry type="library" exported="" name="jetty-server-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="jetty-continuation-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="jetty-security-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="geronimo-servlet_2.5_spec-1.1.2" level="project" />
-    <orderEntry type="library" exported="" name="jetty-jmx-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="jetty-io-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="commons-httpclient-3.1" level="project" />
-    <orderEntry type="library" exported="" name="commons-logging-1.0.4" level="project" />
-    <orderEntry type="library" exported="" name="jetty-client-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="jetty-servlet-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="jetty-util-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="jetty-servlets-7.5.4.v20111024" level="project" />
-    <orderEntry type="library" exported="" name="jetty-http-7.5.4.v20111024" level="project" />
+    <orderEntry type="library" exported="" name="camel-core-2.10.0" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="slf4j-ext-1.7.2" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="cal10n-api-0.7.4" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="log4j-api-2.0-beta4" level="project" />
+    <orderEntry type="library" exported="" name="mail-1.4.5" level="project" />
+    <orderEntry type="library" exported="" name="camel-mail-2.10.3" level="project" />
+    <orderEntry type="library" exported="" name="camel-core-2.10.3" level="project" />
+    <orderEntry type="library" exported="" name="spray-can-1.1-M7" level="project" />
+    <orderEntry type="library" exported="" name="spray-io-1.1-M7" level="project" />
+    <orderEntry type="library" exported="" name="spray-util-1.1-M7" level="project" />
+    <orderEntry type="library" exported="" name="parboiled-scala_2.10.0-RC5-1.1.4" level="project" />
+    <orderEntry type="library" exported="" name="parboiled-core-1.1.4" level="project" />
+    <orderEntry type="library" exported="" name="spray-http-1.1-M7" level="project" />
+    <orderEntry type="library" exported="" name="scala-library-2.10.0" level="project" />
+    <orderEntry type="library" exported="" name="spray-json_2.10-1.2.3" level="project" />
+    <orderEntry type="library" exported="" name="parboiled-scala_2.10-1.1.4" level="project" />
   </component>
 </module>
 

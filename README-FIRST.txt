@@ -25,3 +25,4 @@ Version: 0.2.1    Git Tag:
   * Contributing Authors: Robert Simmons <kraythe@kraythensoft.com>
   * Added configuration for Log4j2 and SLF4J bindings.
   * Added inline documentation to build.gradle file.
+  * Changed the Camel Use Case to read from a local directory instead of jetty so that I can integrate spray

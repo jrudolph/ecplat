@@ -11,18 +11,19 @@ assert gradle.gradleVersion >= '1.4', 'This Build only works with Gradle Version
 apply plugin: 'scala'
 
 // These two options are needed by the Gradle scala compiler to get the right JVM
-sourceCompatibility=1.6
-targetCompatibility=1.6
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
 
 // This tells gradle to use its built in compiler rather than Ant tools. If you don't do this then you will get warnings about
 // deprecated target VMs when compiling the scala
-compileScala.scalaCompileOptions.useAnt=false
+compileScala.scalaCompileOptions.useAnt = false
 
 ext {
   // Version numbers for different library sets are stored here.
   akkaVersion = '2.1.0'
-  camelVersion = '2.10.0'
+  camelVersion = '2.10.3'
   log4jVersion = '2.0-beta4'
+  sprayVersion = '1.1-M7'
 }
 
 configurations {
@@ -30,8 +31,10 @@ configurations {
 }
 
 repositories {
-  // Dont use the Typesafe.com repos, the artifacts you need are in maven central.
+  // Don't use the Typesafe.com repositories for Akka and Scala, the artifacts you need are in maven central.
   mavenCentral()
+  // Used for the Spray artifacts
+  maven { url = 'http://repo.spray.io' }
 }
 
 dependencies {
@@ -39,18 +42,22 @@ dependencies {
   compile group: 'com.typesafe.akka', name: 'akka-actor_2.10', version: akkaVersion
   compile group: 'com.typesafe.akka', name: 'akka-camel_2.10', version: akkaVersion
 
-  // Pluggable modules for Camel
-  compile group: 'org.apache.camel', name: 'camel-jetty', version: camelVersion
-
-  // Log4j 2 Dependencies
+  // Log4j 2 Dependencies: These are used by the dependent modules (such as Camel) which write to SLF4J and Log4j at Runtime
   runtime group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
   runtime group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
   runtime group: 'org.apache.logging.log4j.adapters', name: 'log4j-slf4j-impl', version: log4jVersion
+
+  // Pluggable modules for Camel
+  compile group: 'org.apache.camel', name: 'camel-mail', version: camelVersion
+
+  // Spray related modules
+  compile group: 'io.spray', name: 'spray-can', version: sprayVersion
+  compile group: 'io.spray', name: 'spray-json_2.10', version: '1.2.3'
 }
 
 // This run task starts up the Akka Microkernel which can be killed with ctrl-c
 task run(type: JavaExec, dependsOn: classes) {
-  println('Starting Akka Microkernel, Exit with CTRL-C.')
+  println('Starting Ecplat on Akka Microkernel, Exit with CTRL-C.')
   main = 'com.kraythensoft.ecplat.Main'
   classpath sourceSets.main.runtimeClasspath
 }
