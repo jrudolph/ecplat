@@ -50,11 +50,11 @@ class HTTPRoutingActor extends Actor with spray.util.SprayActorLogging {
 /** Application that runs the server. */
 object Main extends App with SprayCanHttpServerApp {
   // Start the Akka Main Actor System
-  override val system = ActorSystem("Ecplat")
+  override lazy val system = ActorSystem("Ecplat")
 
   // Start up the Spray related HTTP Server and related actors
   val httpServerActor = system.actorOf(Props[HTTPRoutingActor], name = "httpRoutingActor")
-  httpServerActor ! Bind(interface = "localhost", port = 8080)
+  newHttpServer(httpServerActor) ! Bind(interface = "localhost", port = 8080)
 
   // Start up the Apache Camel system and related actors
   val camel = CamelExtension(system)
